@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .page {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            transition: 1s;
+        }
+
+        .page span {
+            transition: 0.5s;
+        }
+
+        #page1 {
+            background-color: #f8d7da;
+        }
+
+        #page2 {
+            background-color: #09e43c;
+        }
+
+        #page3 {
+            background-color: #1277e3;
+        }
+    </style>
+    <title>Scroll Switch</title>
+</head>
+
+<body>
+    <div class="page" id="page1">
+        <span>Page 1</span>
+    </div>
+    <div class="page" id="page2">
+        <span>Page 2</span>
+    </div>
+    <div class="page" id="page3">
+        <span>Page 3</span>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+
+        let currentPage = 0;
+
+        let touchStart = 0;
+        let touchEnd   = 0;
+
+        window.addEventListener('wheel', (event) => {
+            const delta = event.deltaY;
+
+            // Scrolling down
+            if (delta > 0 && currentPage < pages.length - 1) {
+                currentPage++;
+            }
+            // Scrolling up
+            else if (delta < 0 && currentPage > 0) {
+                currentPage--;
+            }
+
+            scrollToPage(currentPage);
+        });
+
+        window.addEventListener('touchstart', (event) => {
+            touchStart = event.touches[0].clientY;
+        });
+
+        window.addEventListener('touchend', (event) => {
+            touchEnd = event.changedTouches[0].clientY;
+                        
+            let diff = touchStart - touchEnd;
+
+            // Scrolling down
+            if (diff > 0 && currentPage < pages.length - 1) {
+                currentPage++;
+            }
+            // Scrolling up
+            else if (diff < 0 && currentPage > 0) {
+                currentPage--;
+            }
+
+            scrollToPage(currentPage);
+        });
+
+        function scrollToPage(index) {
+            pages.forEach((page, pageIndex) => {
+                if (pageIndex === index) {
+                    page.querySelector('span').style.opacity = 1;
+                    page.style.height = '100vh';
+                } else {
+                    page.querySelector('span').style.opacity = 0;
+                    page.style.height = '0';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
