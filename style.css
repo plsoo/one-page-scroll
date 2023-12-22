@@ -1,0 +1,256 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden !important;
+  background-color: #212326;
+  color: #818180;
+  font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+}
+
+h2 {
+  font-size: 25px;
+  color: #ffffff;
+}
+p {
+  font-size: 16px;
+}
+a {
+  font-size: 16px;
+  color: #818180;
+  text-transform: uppercase;
+}
+
+.menu {
+  z-index: 100;
+  position: absolute;
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  /* margin-left: 50%;
+  transform: translateX(-50%); */
+  cursor: pointer;
+  animation: startScale 3s ease-in-out;
+}
+
+@keyframes startScale {
+  0% {
+    position: fixed;
+    margin-top: 40%;
+    scale: 5;
+  }
+  40% {
+    position: fixed;
+    margin-top: 40%;
+    scale: 5;
+  }
+  100% {
+    position: fixed;
+    margin-top: 30px;
+    scale: 1;
+  }
+}
+
+.anima {
+  animation: startHeader 3s ease-in-out;
+  margin: 0 auto;
+}
+
+@keyframes startHeader {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+    scale: 0.1;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.burger {
+  width: 30px;
+  height: 20px;
+  display: flex;
+  background-color: transparent;
+  flex-direction: column;
+  margin-right: 20px;
+  gap: 3px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+
+.line1,
+.line3 {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.line2 {
+  width: 20px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  transition: 1.2s;
+  overflow: hidden;
+}
+
+.page-image {
+  flex-shrink: 0;
+  width: 50vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page-content {
+  text-align: center;
+  width: 50vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-content-text {
+  width: 50%;
+}
+
+#page1 {
+  background-image: url(https://altrain.ru/i/photo/11-15.webp);
+  background-position: center;
+  background-size: cover;
+}
+#page2 .page-image {
+  background-image: url(https://altrain.ru/i/photo/Arhitekturnoe-osveschenie-12.webp);
+  background-position: center;
+  background-size: cover;
+}
+
+#page3 .page-image {
+  background-image: url(https://altrain.ru/i/photo/Repino-6.webp);
+  background-position: center;
+  background-size: cover;
+}
+
+#page4 {
+  background-image: url("https://altrain.ru/i/photo/Vystavochnye-sady-20.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+#page5 {
+  background-image: url("https://altrain.ru/i/img/lighting-groups/Vystavka-1.jpg");
+  background-position: center;
+  background-size: cover;
+}
+#page6 {
+  background-image: url("https://altrain.ru/i/img/lighting-groups/Vystavka-2.jpg");
+  background-position: center;
+  background-size: cover;
+}
+#page7 {
+  background-image: url("https://altrain.ru/i/img/lighting-groups/Vystavka-3.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.up {
+  transform: translateY(25%);
+  transition: 1.2s;
+}
+
+.down {
+  transform: translateY(-25%);
+  transition: 1.2s;
+}
+
+#page4 {
+  position: relative;
+}
+.scroll {
+  position: relative;
+}
+
+.page-horizont:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 1.5s;
+  opacity: 0;
+  /* z-index: -1; */
+}
+.banner {
+  position: absolute;
+  display: block;
+  width: 320px;
+  height: 350px;
+  max-width: 82%;
+  box-sizing: border-box;
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 50px;
+  text-transform: uppercase;
+}
+
+.banner-horizont {
+  left: auto;
+  right: 10%;
+}
+
+.banner-text {
+  margin-bottom: 40px;
+  font-size: 28px;
+}
+
+.banner-link {
+  color: #ffffff;
+}
+
+.times {
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.page-horizont {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 40px;
+  }
+}

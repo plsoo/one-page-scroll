@@ -1,112 +1,55 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="altrain.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
+    <title>Альтрейн</title>
+  </head>
+  <body>
 
-        .page {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            transition: 1s;
-        }
+    <section class="page" data-animation="vertical">
+      <div class="content" style="background-color: magenta;">
+        <h2>Слайд 1</h2>
+      </div>
+    </section>
 
-        .page span {
-            transition: 0.5s;
-        }
+    <section class="page" data-animation="reverse">
+      <div class="two-columns-blocks">
+        <div class="block-column" style="background-color: brown;">
+          <h2>Слайд 2.1</h2>
+        </div>
+        <div class="block-column" style="background-image: url('https://altrain.ru/i/photo/Arhitekturnoe-osveschenie-12.webp');">
+          <h2>Слайд 2.2</h2>
+        </div>
+      </div>
+    </section>
 
-        #page1 {
-            background-color: #f8d7da;
-        }
+    <section class="page" data-animation="reverse">
+      <div class="two-columns-blocks">
+        <div class="block-column" style="background-image: url('https://altrain.ru/i/photo/Repino-6.webp');">
+          <h2>Слайд 3.1</h2>
+        </div>
+        <div class="block-column" style="background-color: rgb(231, 74, 87);">
+          <h2>Слайд 3.2</h2>
+        </div>
+      </div>
+    </section>
 
-        #page2 {
-            background-color: #09e43c;
-        }
+    <section class="page" data-animation="vertical">
+      <div class="content" style="background-color: rgb(92, 233, 255);">
+        <h2>Слайд 4</h2>
+      </div>
+    </section>
 
-        #page3 {
-            background-color: #1277e3;
-        }
-    </style>
-    <title>Scroll Switch</title>
-</head>
+    <section class="page" data-animation="vertical">
+      <div class="content" style="background-color: rgb(92, 233, 255);">
+        <h2>Слайд 4</h2>
+      </div>
+    </section>
 
-<body>
-    <div class="page" id="page1">
-        <span>Page 1</span>
-    </div>
-    <div class="page" id="page2">
-        <span>Page 2</span>
-    </div>
-    <div class="page" id="page3">
-        <span>Page 3</span>
-    </div>
-
-    <script>
-        const pages = document.querySelectorAll('.page');
-
-        let currentPage = 0;
-
-        let touchStart = 0;
-        let touchEnd   = 0;
-
-        window.addEventListener('wheel', (event) => {
-            const delta = event.deltaY;
-
-            // Scrolling down
-            if (delta > 0 && currentPage < pages.length - 1) {
-                currentPage++;
-            }
-            // Scrolling up
-            else if (delta < 0 && currentPage > 0) {
-                currentPage--;
-            }
-
-            scrollToPage(currentPage);
-        });
-
-        window.addEventListener('touchstart', (event) => {
-            touchStart = event.touches[0].clientY;
-        });
-
-        window.addEventListener('touchend', (event) => {
-            touchEnd = event.changedTouches[0].clientY;
-                        
-            let diff = touchStart - touchEnd;
-
-            // Scrolling down
-            if (diff > 0 && currentPage < pages.length - 1) {
-                currentPage++;
-            }
-            // Scrolling up
-            else if (diff < 0 && currentPage > 0) {
-                currentPage--;
-            }
-
-            scrollToPage(currentPage);
-        });
-
-        function scrollToPage(index) {
-            pages.forEach((page, pageIndex) => {
-                if (pageIndex === index) {
-                    page.querySelector('span').style.opacity = 1;
-                    page.style.height = '100vh';
-                } else {
-                    page.querySelector('span').style.opacity = 0;
-                    page.style.height = '0';
-                }
-            });
-        }
-    </script>
-</body>
-
+    <script src="index2.js"></script>
+  </body>
 </html>
