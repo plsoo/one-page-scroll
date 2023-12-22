@@ -4,6 +4,9 @@ const pageNodes = [...document.querySelectorAll('.page')];
 let prevPage    = null;
 let currentPage = 0;
 
+let touchStart = 0;
+let touchEnd   = 0;
+
 // Очистить тело документа
 bodyNode.innerHTML = '';
 
@@ -24,6 +27,30 @@ window.addEventListener('wheel', (event) => {
   }
 
   swipePage(event.deltaY);
+});
+
+window.addEventListener('touchstart', (event) => {
+  touchStart = event.touches[0].clientY;
+});
+
+window.addEventListener('touchend', (event) => {
+  const currentPageNode = bodyNode.querySelector('.page');
+
+  touchEnd = event.changedTouches[0].clientY;
+
+  let diff = touchStart - touchEnd;
+
+  switch(currentPageNode.dataset.animation) {
+    case 'vertical':
+      verticalAnimation(scrollDirection(diff));
+      break;
+
+    case 'reverse':
+      reverseAnimation(scrollDirection(diff));
+      break;
+  }
+
+  swipePage(diff);
 });
 
 function reverseAnimation(direction) {
